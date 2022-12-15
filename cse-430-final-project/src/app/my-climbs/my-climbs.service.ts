@@ -19,6 +19,7 @@ export class MyClimbsService {
       .get('http://localhost:3000/climbs')
       .subscribe((myClimbData) => {
         this.myClimbs = myClimbData;
+        console.log(this.myClimbs)
       });
   }
   

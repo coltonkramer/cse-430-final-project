@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MyClimbs } from '../my-climbs.model';
 import { MyClimbsService } from '../my-climbs.service';
 import { Subscription } from 'rxjs'
