@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MyClimbs } from '../my-climbs.model';
 import { MyClimbsService } from '../my-climbs.service';
-
 import { Subscription } from 'rxjs'
 
 
@@ -11,16 +10,19 @@ import { Subscription } from 'rxjs'
   styleUrls: ['./my-climbs-list.component.css']
 })
 export class myClimbsListComponent implements OnInit {
-  private subscription!: Subscription;
+  myClimbs : MyClimbs[];
+  subscription: Subscription;
 
-  @Input() myClimbs: MyClimbs;
   constructor(private myClimbsService: MyClimbsService) { }
 
-  ngOnInit(): void {
-    this.subscription = this.myClimbsService.contactChangedEvent
-    .subscribe((contacts: any) => {
-      this.myClimbs = this.myClimbs;
+  ngOnInit(){
+    this.myClimbsService.getClimbs();
+    this.myClimbsService.myClimbsChangedEvent.subscribe((myClimbs) => {
+      this.myClimbs = myClimbs.slice();
     });
+    this.subscription = this.myClimbsService.myClimbsChangedEvent.subscribe((myClimbs: MyClimbs[]) => {
+      this.myClimbs = myClimbs
+    })
   }
 
 

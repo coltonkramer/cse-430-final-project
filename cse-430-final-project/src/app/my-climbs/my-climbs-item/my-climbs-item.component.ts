@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MyClimbs } from '../../my-climbs.model';
+import { MyClimbs } from '../my-climbs.model';
 
 
 @Component({
@@ -8,11 +8,11 @@ import { MyClimbs } from '../../my-climbs.model';
   styleUrls: ['./my-climbs-item.component.css']
 })
 export class myClimbsItemComponent implements OnInit {
-  @Input() myClimbs: MyClimbs;
+  @Input() myClimb: MyClimbs;
+  
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

@@ -1,12 +1,10 @@
-<div class="panel-body">
-    <div class="center-panel">
-      <div class="row">
-        <div class="col-xs-12">
-          <app-my-climbs-item
-            *ngFor="let myClimb of myClimbs">
-            [myClimb]="myClimb"
-          </app-my-climbs-item>
-        </div>
-      </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel-body table-bordered" style="width: 30%; padding: 5px">
+      <app-my-climbs-item
+        *ngFor="let myClimbEl of myClimbs"
+        [myClimb]="myClimbEl"
+      ></app-my-climbs-item>
     </div>
   </div>
+</div>

@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MyClimbs } from './my-climbs.model';
+import { map, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MyClimbsService {
-  contactChangedEvent: any;
+  public myClimbs: any;
+  myClimbsChangedEvent = new Subject<MyClimbs[]>();
 
-  constructor(private http: HttpClient){
-
-  }
-  getClimbs(): MyClimbs[] {
-      this.http.get('http://localhost:3000/myClimbs')
-      .subscribe(() => {
-      })
-      return null
+  constructor(private http: HttpClient) {
+    this.getClimbs()
   }
 
+  getClimbs() : void{
+    this.http
+      .get('http://localhost:3000/climbs')
+      .subscribe((myClimbData) => {
+        this.myClimbs = myClimbData;
+      });
+  }
+  
 }
